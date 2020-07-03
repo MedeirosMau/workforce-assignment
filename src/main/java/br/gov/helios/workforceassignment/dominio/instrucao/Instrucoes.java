@@ -31,6 +31,43 @@ public class Instrucoes {
     }
 
     public double cargaMaxima() {
-        return 82675;
+        return 15000;
+    }
+
+    public Instrucao get(int index) {
+        return repositorio.get(index);
+    }
+
+    public Double cargaDaUnidade(UnidadeInstrucao unidade) {
+        double carga = 0;
+        for (int i = 0; i < quantidade(); i++) {
+            Instrucao instrucao = repositorio.get(i);
+            if (instrucao.unidade == unidade) {
+                carga += instrucao.tipoInstrucao.carga;
+            }
+        }
+        return carga;
+    }
+
+    public int pesoDaUnidade(UnidadeInstrucao unidade) {
+        int valor = 0;
+        for (int i = 0; i < quantidade(); i++) {
+            Instrucao instrucao = repositorio.get(i);
+            if (instrucao.unidade == unidade) {
+                valor += instrucao.tipoInstrucao.peso();
+            }
+        }
+        return valor;
+    }
+
+    public double cargaEmEstoqueDoGrupo(GrupoTipoInstrucao grupo) {
+        double carga = 0;
+        for (int i = 0; i < quantidade(); i++) {
+            Instrucao instrucao = repositorio.get(i);
+            if (instrucao.grupoTipoInstrucao == grupo) {
+                carga += instrucao.tipoInstrucao.carga;
+            }
+        }
+        return carga;
     }
 }

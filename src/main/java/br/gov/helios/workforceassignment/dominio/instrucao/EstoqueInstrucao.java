@@ -341,4 +341,11 @@ public enum EstoqueInstrucao {
         this.quantidade = quantidade;
     }
 
+    public static int totalInstrucoes() {
+        int total = 0;
+        for (EstoqueInstrucao estoque : values()) {
+            total += estoque.quantidade;
+        }
+        return total;
+    }
 }

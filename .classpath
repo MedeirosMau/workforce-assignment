@@ -24,6 +24,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
-	<classpathentry kind="lib" path="E:/ferramentas/cplex/cplex-studio-community129/cplex/lib/cplex.jar"/>
+	<classpathentry kind="lib" path="E:/ferramentas/cplex/CPLEX_Studio1210/cplex/lib/cplex.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

@@ -7,11 +7,11 @@ public enum GrupoTipoInstrucao {
     CONTAS("CONTAS", 1),
     DESG("DES", 1),
     DRC("DRC", 1),
-    FISCALIZACAO("FISCALIZACAO", 1),
+    FISCALIZACAO("FISCALIZACAO", 2),
     OUTROS_CONTROLE_EXTERNO("OUTROS CONTROLE EXTERNO", 1),
     PESSOAL("PESSOAL", 1),
     SOLICITACAO_CN("SOLICITACAO CN", 1),
-    TCEG("TCE", 1);
+    TCEG("TCE", 2);
 
     public final String descricao;
     public final int peso;

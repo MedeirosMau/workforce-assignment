@@ -5,9 +5,9 @@ import br.gov.helios.workforceassignment.dominio.problema.irrestrito.ServicoReso
 
 public class ServicoAplicacaoResolverProblemaAplicacao {
 
-    public void resolver(boolean seProcesso) {
+    public void resolver(boolean problemaComInstrucao) {
         try {
-            if (seProcesso) {
+            if (!problemaComInstrucao) {
                 new ServicoResolverProblemaIrrestrito().resolver();
             } else {
                 new ServicoResolverProblemaInstrucaoIrrestrito().resolver();
