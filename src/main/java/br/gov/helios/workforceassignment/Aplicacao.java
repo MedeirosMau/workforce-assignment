@@ -5,7 +5,7 @@ import br.gov.helios.workforceassignment.aplicacao.ServicoAplicacaoResolverProbl
 public class Aplicacao {
 
     public static void main(String[] args) throws Exception {
-        boolean problemaBasico = true;
-        new ServicoAplicacaoResolverProblemaAplicacao().resolver(problemaBasico);
+        boolean problemaComInstrucao = true;
+        new ServicoAplicacaoResolverProblemaAplicacao().resolver(problemaComInstrucao);
     }
 }

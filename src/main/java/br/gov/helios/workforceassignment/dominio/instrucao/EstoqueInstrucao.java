@@ -1,0 +1,344 @@
+package br.gov.helios.workforceassignment.dominio.instrucao;
+
+import static br.gov.helios.workforceassignment.dominio.instrucao.TipoInstrucao.ACOM;
+import static br.gov.helios.workforceassignment.dominio.instrucao.TipoInstrucao.ADS;
+import static br.gov.helios.workforceassignment.dominio.instrucao.TipoInstrucao.APOS;
+import static br.gov.helios.workforceassignment.dominio.instrucao.TipoInstrucao.DEN;
+import static br.gov.helios.workforceassignment.dominio.instrucao.TipoInstrucao.DES;
+import static br.gov.helios.workforceassignment.dominio.instrucao.TipoInstrucao.MON;
+import static br.gov.helios.workforceassignment.dominio.instrucao.TipoInstrucao.PC;
+import static br.gov.helios.workforceassignment.dominio.instrucao.TipoInstrucao.PCIV;
+import static br.gov.helios.workforceassignment.dominio.instrucao.TipoInstrucao.PCSP;
+import static br.gov.helios.workforceassignment.dominio.instrucao.TipoInstrucao.PEEC;
+import static br.gov.helios.workforceassignment.dominio.instrucao.TipoInstrucao.PMIL;
+import static br.gov.helios.workforceassignment.dominio.instrucao.TipoInstrucao.RA;
+import static br.gov.helios.workforceassignment.dominio.instrucao.TipoInstrucao.RACOM;
+import static br.gov.helios.workforceassignment.dominio.instrucao.TipoInstrucao.REFO;
+import static br.gov.helios.workforceassignment.dominio.instrucao.TipoInstrucao.REPR;
+import static br.gov.helios.workforceassignment.dominio.instrucao.TipoInstrucao.RI;
+import static br.gov.helios.workforceassignment.dominio.instrucao.TipoInstrucao.RL;
+import static br.gov.helios.workforceassignment.dominio.instrucao.TipoInstrucao.RMON;
+import static br.gov.helios.workforceassignment.dominio.instrucao.TipoInstrucao.SCN;
+import static br.gov.helios.workforceassignment.dominio.instrucao.TipoInstrucao.SOLI;
+import static br.gov.helios.workforceassignment.dominio.instrucao.TipoInstrucao.TC;
+import static br.gov.helios.workforceassignment.dominio.instrucao.TipoInstrucao.TCE;
+import static br.gov.helios.workforceassignment.dominio.instrucao.UnidadeInstrucao.SECEXADMIN;
+import static br.gov.helios.workforceassignment.dominio.instrucao.UnidadeInstrucao.SECEXAMB;
+import static br.gov.helios.workforceassignment.dominio.instrucao.UnidadeInstrucao.SECEXDEFES;
+import static br.gov.helios.workforceassignment.dominio.instrucao.UnidadeInstrucao.SECEXDESEN;
+import static br.gov.helios.workforceassignment.dominio.instrucao.UnidadeInstrucao.SECEXEDUC;
+import static br.gov.helios.workforceassignment.dominio.instrucao.UnidadeInstrucao.SECEXESTAT;
+import static br.gov.helios.workforceassignment.dominio.instrucao.UnidadeInstrucao.SECEXFINAN;
+import static br.gov.helios.workforceassignment.dominio.instrucao.UnidadeInstrucao.SECEXPREVI;
+import static br.gov.helios.workforceassignment.dominio.instrucao.UnidadeInstrucao.SECEXSAUDE;
+import static br.gov.helios.workforceassignment.dominio.instrucao.UnidadeInstrucao.SECEXTCE;
+import static br.gov.helios.workforceassignment.dominio.instrucao.UnidadeInstrucao.SECEXTRAB;
+import static br.gov.helios.workforceassignment.dominio.instrucao.UnidadeInstrucao.SECEX_2;
+import static br.gov.helios.workforceassignment.dominio.instrucao.UnidadeInstrucao.SECEX_4;
+import static br.gov.helios.workforceassignment.dominio.instrucao.UnidadeInstrucao.SECEX_5;
+import static br.gov.helios.workforceassignment.dominio.instrucao.UnidadeInstrucao.SECEX_6;
+import static br.gov.helios.workforceassignment.dominio.instrucao.UnidadeInstrucao.SECEX_8;
+import static br.gov.helios.workforceassignment.dominio.instrucao.UnidadeInstrucao.SEC_AC;
+import static br.gov.helios.workforceassignment.dominio.instrucao.UnidadeInstrucao.SEC_AL;
+import static br.gov.helios.workforceassignment.dominio.instrucao.UnidadeInstrucao.SEC_AM;
+import static br.gov.helios.workforceassignment.dominio.instrucao.UnidadeInstrucao.SEC_AP;
+import static br.gov.helios.workforceassignment.dominio.instrucao.UnidadeInstrucao.SEC_BA;
+import static br.gov.helios.workforceassignment.dominio.instrucao.UnidadeInstrucao.SEC_CE;
+import static br.gov.helios.workforceassignment.dominio.instrucao.UnidadeInstrucao.SEC_ES;
+import static br.gov.helios.workforceassignment.dominio.instrucao.UnidadeInstrucao.SEC_GO;
+import static br.gov.helios.workforceassignment.dominio.instrucao.UnidadeInstrucao.SEC_MA;
+import static br.gov.helios.workforceassignment.dominio.instrucao.UnidadeInstrucao.SEC_MG;
+import static br.gov.helios.workforceassignment.dominio.instrucao.UnidadeInstrucao.SEC_MT;
+import static br.gov.helios.workforceassignment.dominio.instrucao.UnidadeInstrucao.SEC_PA;
+import static br.gov.helios.workforceassignment.dominio.instrucao.UnidadeInstrucao.SEC_PB;
+import static br.gov.helios.workforceassignment.dominio.instrucao.UnidadeInstrucao.SEC_PE;
+import static br.gov.helios.workforceassignment.dominio.instrucao.UnidadeInstrucao.SEC_PI;
+import static br.gov.helios.workforceassignment.dominio.instrucao.UnidadeInstrucao.SEC_PR;
+import static br.gov.helios.workforceassignment.dominio.instrucao.UnidadeInstrucao.SEC_RJ;
+import static br.gov.helios.workforceassignment.dominio.instrucao.UnidadeInstrucao.SEC_RN;
+import static br.gov.helios.workforceassignment.dominio.instrucao.UnidadeInstrucao.SEC_RO;
+import static br.gov.helios.workforceassignment.dominio.instrucao.UnidadeInstrucao.SEC_RR;
+import static br.gov.helios.workforceassignment.dominio.instrucao.UnidadeInstrucao.SEC_RS;
+import static br.gov.helios.workforceassignment.dominio.instrucao.UnidadeInstrucao.SEC_SC;
+import static br.gov.helios.workforceassignment.dominio.instrucao.UnidadeInstrucao.SEC_SE;
+import static br.gov.helios.workforceassignment.dominio.instrucao.UnidadeInstrucao.SEC_SP;
+import static br.gov.helios.workforceassignment.dominio.instrucao.UnidadeInstrucao.SEC_TO;
+import static br.gov.helios.workforceassignment.dominio.instrucao.UnidadeInstrucao.SEFIP;
+import static br.gov.helios.workforceassignment.dominio.instrucao.UnidadeInstrucao.SEFTI;
+import static br.gov.helios.workforceassignment.dominio.instrucao.UnidadeInstrucao.SEINFRACOM;
+import static br.gov.helios.workforceassignment.dominio.instrucao.UnidadeInstrucao.SEINFRAELE;
+import static br.gov.helios.workforceassignment.dominio.instrucao.UnidadeInstrucao.SEINFRAOPE;
+import static br.gov.helios.workforceassignment.dominio.instrucao.UnidadeInstrucao.SEINFRAPET;
+import static br.gov.helios.workforceassignment.dominio.instrucao.UnidadeInstrucao.SEINFRAPOR;
+import static br.gov.helios.workforceassignment.dominio.instrucao.UnidadeInstrucao.SEINFRAROD;
+import static br.gov.helios.workforceassignment.dominio.instrucao.UnidadeInstrucao.SEINFRAURB;
+import static br.gov.helios.workforceassignment.dominio.instrucao.UnidadeInstrucao.SELOG;
+import static br.gov.helios.workforceassignment.dominio.instrucao.UnidadeInstrucao.SEMAG;
+import static br.gov.helios.workforceassignment.dominio.instrucao.UnidadeInstrucao.SEMEC;
+import static br.gov.helios.workforceassignment.dominio.instrucao.UnidadeInstrucao.SEPROC;
+import static br.gov.helios.workforceassignment.dominio.instrucao.UnidadeInstrucao.SERUR;
+
+public enum EstoqueInstrucao {
+
+    SEMAG_ACOM(SEMAG, ACOM, 2),
+    SEMAG_DEN(SEMAG, DEN, 1),
+    SEMAG_PC(SEMAG, PC, 2),
+    SEMAG_RA(SEMAG, RA, 3),
+    SEMAG_REPR(SEMAG, REPR, 7),
+    SEMAG_RI(SEMAG, RI, 1),
+    SEMAG_RL(SEMAG, RL, 3),
+    SEMAG_SCN(SEMAG, SCN, 2),
+    SEMAG_SOLI(SEMAG, SOLI, 1),
+    SEFIP_ADS(SEFIP, ADS, 55),
+    SEFIP_APOS(SEFIP, APOS, 393),
+    SEFIP_DEN(SEFIP, DEN, 1),
+    SEFIP_PCIV(SEFIP, PCIV, 25),
+    SEFIP_PEEC(SEFIP, PEEC, 10),
+    SEFIP_PMIL(SEFIP, PMIL, 56),
+    SEFIP_RA(SEFIP, RA, 14),
+    SEFIP_REFO(SEFIP, REFO, 20),
+    SEFIP_REPR(SEFIP, REPR, 3),
+    SEFIP_RI(SEFIP, RI, 2),
+    SEFIP_RL(SEFIP, RL, 1),
+    SEFIP_SCN(SEFIP, SCN, 1),
+    SECEX_4_RA(SECEX_4, RA, 1),
+    SECEX_5_RA(SECEX_5, RA, 6),
+    SECEX_5_REPR(SECEX_5, REPR, 1),
+    SECEX_6_MON(SECEX_6, MON, 1),
+    SECEX_6_RA(SECEX_6, RA, 2),
+    SECEX_2_RA(SECEX_2, RA, 3),
+    SECEX_2_RACOM(SECEX_2, RACOM, 1),
+    SERUR_ADS(SERUR, ADS, 3),
+    SERUR_APOS(SERUR, APOS, 30),
+    SERUR_MON(SERUR, MON, 2),
+    SERUR_PC(SERUR, PC, 12),
+    SERUR_PCIV(SERUR, PCIV, 8),
+    SERUR_PCSP(SERUR, PCSP, 1),
+    SERUR_RA(SERUR, RA, 17),
+    SERUR_REPR(SERUR, REPR, 19),
+    SERUR_RL(SERUR, RL, 2),
+    SERUR_SCN(SERUR, SCN, 1),
+    SERUR_TC(SERUR, TC, 1),
+    SERUR_TCE(SERUR, TCE, 133),
+    SEC_AC_RA(SEC_AC, RA, 5),
+    SEC_AC_REPR(SEC_AC, REPR, 1),
+    SEC_AL_RA(SEC_AL, RA, 10),
+    SEC_AM_RA(SEC_AM, RA, 3),
+    SEC_AM_REPR(SEC_AM, REPR, 3),
+    SEC_AP_RA(SEC_AP, RA, 6),
+    SEC_AP_RL(SEC_AP, RL, 1),
+    SEC_BA_RA(SEC_BA, RA, 20),
+    SEC_BA_RI(SEC_BA, RI, 1),
+    SEC_BA_RL(SEC_BA, RL, 2),
+    SEC_BA_TC(SEC_BA, TC, 1),
+    SEC_BA_TCE(SEC_BA, TCE, 1),
+    SEC_CE_DEN(SEC_CE, DEN, 2),
+    SEC_CE_RA(SEC_CE, RA, 8),
+    SEC_CE_TCE(SEC_CE, TCE, 1),
+    SEC_ES_RA(SEC_ES, RA, 10),
+    SEC_ES_REPR(SEC_ES, REPR, 1),
+    SEC_GO_RA(SEC_GO, RA, 4),
+    SEC_MA_DEN(SEC_MA, DEN, 2),
+    SEC_MA_RA(SEC_MA, RA, 12),
+    SEC_MA_RL(SEC_MA, RL, 1),
+    SEC_MG_RA(SEC_MG, RA, 10),
+    SEC_MG_SCN(SEC_MG, SCN, 1),
+    SEC_MT_RA(SEC_MT, RA, 13),
+    SEC_MT_RACOM(SEC_MT, RACOM, 1),
+    SEC_MT_REPR(SEC_MT, REPR, 2),
+    SEC_PA_RA(SEC_PA, RA, 8),
+    SEC_PA_REPR(SEC_PA, REPR, 2),
+    SEC_PB_RA(SEC_PB, RA, 9),
+    SEC_PE_MON(SEC_PE, MON, 1),
+    SEC_PE_RA(SEC_PE, RA, 5),
+    SEC_PE_REPR(SEC_PE, REPR, 2),
+    SEC_PI_DEN(SEC_PI, DEN, 1),
+    SEC_PI_RA(SEC_PI, RA, 12),
+    SEC_PR_RA(SEC_PR, RA, 9),
+    SEC_PR_RACOM(SEC_PR, RACOM, 1),
+    SEC_PR_REPR(SEC_PR, REPR, 6),
+    SEC_RJ_RA(SEC_RJ, RA, 13),
+    SEC_RJ_SCN(SEC_RJ, SCN, 1),
+    SEC_RN_RA(SEC_RN, RA, 5),
+    SEC_RN_REPR(SEC_RN, REPR, 2),
+    SEC_RS_RA(SEC_RS, RA, 8),
+    SEC_RS_REPR(SEC_RS, REPR, 2),
+    SEC_RO_RA(SEC_RO, RA, 3),
+    SEC_RR_RA(SEC_RR, RA, 1),
+    SEC_SC_MON(SEC_SC, MON, 1),
+    SEC_SC_RA(SEC_SC, RA, 12),
+    SEC_SE_RA(SEC_SE, RA, 10),
+    SEC_SE_REPR(SEC_SE, REPR, 1),
+    SEC_SE_RMON(SEC_SE, RMON, 1),
+    SEC_SP_MON(SEC_SP, MON, 1),
+    SEC_SP_RA(SEC_SP, RA, 11),
+    SEC_SP_REPR(SEC_SP, REPR, 17),
+    SEC_TO_RA(SEC_TO, RA, 16),
+    SEFTI_RA(SEFTI, RA, 1),
+    SEFTI_RACOM(SEFTI, RACOM, 2),
+    SEFTI_REPR(SEFTI, REPR, 3),
+    SEFTI_RL(SEFTI, RL, 2),
+    SEFTI_TCE(SEFTI, TCE, 1),
+    SECEX_8_RA(SECEX_8, RA, 2),
+    SECEXESTAT_ACOM(SECEXESTAT, ACOM, 4),
+    SECEXESTAT_DEN(SECEXESTAT, DEN, 4),
+    SECEXESTAT_MON(SECEXESTAT, MON, 4),
+    SECEXESTAT_PC(SECEXESTAT, PC, 16),
+    SECEXESTAT_RA(SECEXESTAT, RA, 10),
+    SECEXESTAT_RACOM(SECEXESTAT, RACOM, 2),
+    SECEXESTAT_REPR(SECEXESTAT, REPR, 11),
+    SECEXESTAT_RL(SECEXESTAT, RL, 1),
+    SECEXESTAT_SCN(SECEXESTAT, SCN, 3),
+    SECEXESTAT_TCE(SECEXESTAT, TCE, 6),
+    SECEXDEFES_DEN(SECEXDEFES, DEN, 1),
+    SECEXDEFES_DES(SECEXDEFES, DES, 1),
+    SECEXDEFES_MON(SECEXDEFES, MON, 1),
+    SECEXDEFES_PC(SECEXDEFES, PC, 9),
+    SECEXDEFES_RA(SECEXDEFES, RA, 5),
+    SECEXDEFES_REPR(SECEXDEFES, REPR, 7),
+    SECEXDEFES_TCE(SECEXDEFES, TCE, 4),
+    SELOG_DEN(SELOG, DEN, 2),
+    SELOG_RA(SELOG, RA, 2),
+    SELOG_REPR(SELOG, REPR, 17),
+    SECEXEDUC_ACOM(SECEXEDUC, ACOM, 1),
+    SECEXEDUC_DEN(SECEXEDUC, DEN, 3),
+    SECEXEDUC_MON(SECEXEDUC, MON, 9),
+    SECEXEDUC_PC(SECEXEDUC, PC, 5),
+    SECEXEDUC_RA(SECEXEDUC, RA, 10),
+    SECEXEDUC_RACOM(SECEXEDUC, RACOM, 1),
+    SECEXEDUC_REPR(SECEXEDUC, REPR, 20),
+    SECEXEDUC_RMON(SECEXEDUC, RMON, 1),
+    SECEXSAUDE_ACOM(SECEXSAUDE, ACOM, 2),
+    SECEXSAUDE_DEN(SECEXSAUDE, DEN, 8),
+    SECEXSAUDE_MON(SECEXSAUDE, MON, 13),
+    SECEXSAUDE_PC(SECEXSAUDE, PC, 3),
+    SECEXSAUDE_RA(SECEXSAUDE, RA, 5),
+    SECEXSAUDE_RACOM(SECEXSAUDE, RACOM, 2),
+    SECEXSAUDE_REPR(SECEXSAUDE, REPR, 49),
+    SECEXSAUDE_RMON(SECEXSAUDE, RMON, 1),
+    SECEXSAUDE_SOLI(SECEXSAUDE, SOLI, 1),
+    SECEXSAUDE_TC(SECEXSAUDE, TC, 2),
+    SECEXSAUDE_TCE(SECEXSAUDE, TCE, 1),
+    SECEXPREVI_DEN(SECEXPREVI, DEN, 4),
+    SECEXPREVI_MON(SECEXPREVI, MON, 4),
+    SECEXPREVI_PC(SECEXPREVI, PC, 2),
+    SECEXPREVI_RA(SECEXPREVI, RA, 5),
+    SECEXPREVI_RACOM(SECEXPREVI, RACOM, 1),
+    SECEXPREVI_REPR(SECEXPREVI, REPR, 8),
+    SECEXPREVI_RL(SECEXPREVI, RL, 3),
+    SECEXPREVI_SCN(SECEXPREVI, SCN, 1),
+    SECEXPREVI_TCE(SECEXPREVI, TCE, 1),
+    SECEXDESEN_MON(SECEXDESEN, MON, 4),
+    SECEXDESEN_PC(SECEXDESEN, PC, 1),
+    SECEXDESEN_PCSP(SECEXDESEN, PCSP, 1),
+    SECEXDESEN_RA(SECEXDESEN, RA, 3),
+    SECEXDESEN_REPR(SECEXDESEN, REPR, 2),
+    SECEXDESEN_SCN(SECEXDESEN, SCN, 1),
+    SECEXDESEN_TCE(SECEXDESEN, TCE, 5),
+    SECEXFINAN_ACOM(SECEXFINAN, ACOM, 1),
+    SECEXFINAN_DEN(SECEXFINAN, DEN, 1),
+    SECEXFINAN_DES(SECEXFINAN, DES, 1),
+    SECEXFINAN_MON(SECEXFINAN, MON, 1),
+    SECEXFINAN_PC(SECEXFINAN, PC, 5),
+    SECEXFINAN_RA(SECEXFINAN, RA, 13),
+    SECEXFINAN_REPR(SECEXFINAN, REPR, 24),
+    SECEXFINAN_SCN(SECEXFINAN, SCN, 1),
+    SECEXFINAN_SOLI(SECEXFINAN, SOLI, 1),
+    SECEXAMB_DEN(SECEXAMB, DEN, 2),
+    SECEXAMB_MON(SECEXAMB, MON, 3),
+    SECEXAMB_PC(SECEXAMB, PC, 3),
+    SECEXAMB_RA(SECEXAMB, RA, 10),
+    SECEXAMB_REPR(SECEXAMB, REPR, 2),
+    SECEXAMB_RI(SECEXAMB, RI, 1),
+    SECEXAMB_RL(SECEXAMB, RL, 1),
+    SECEXAMB_SCN(SECEXAMB, SCN, 1),
+    SECEXAMB_TC(SECEXAMB, TC, 2),
+    SECEXAMB_TCE(SECEXAMB, TCE, 2),
+    SECEXADMIN_DEN(SECEXADMIN, DEN, 2),
+    SECEXADMIN_MON(SECEXADMIN, MON, 1),
+    SECEXADMIN_PC(SECEXADMIN, PC, 5),
+    SECEXADMIN_RA(SECEXADMIN, RA, 2),
+    SECEXADMIN_REPR(SECEXADMIN, REPR, 8),
+    SECEXADMIN_TC(SECEXADMIN, TC, 1),
+    SEINFRACOM_ACOM(SEINFRACOM, ACOM, 1),
+    SEINFRACOM_DEN(SEINFRACOM, DEN, 3),
+    SEINFRACOM_DES(SEINFRACOM, DES, 1),
+    SEINFRACOM_PC(SEINFRACOM, PC, 4),
+    SEINFRACOM_RA(SEINFRACOM, RA, 8),
+    SEINFRACOM_RACOM(SEINFRACOM, RACOM, 4),
+    SEINFRACOM_REPR(SEINFRACOM, REPR, 2),
+    SEINFRACOM_RL(SEINFRACOM, RL, 1),
+    SEINFRACOM_SCN(SEINFRACOM, SCN, 1),
+    SEINFRACOM_TCE(SEINFRACOM, TCE, 2),
+    SEINFRAPET_ACOM(SEINFRAPET, ACOM, 2),
+    SEINFRAPET_DEN(SEINFRAPET, DEN, 1),
+    SEINFRAPET_DES(SEINFRAPET, DES, 2),
+    SEINFRAPET_MON(SEINFRAPET, MON, 1),
+    SEINFRAPET_PC(SEINFRAPET, PC, 5),
+    SEINFRAPET_RA(SEINFRAPET, RA, 4),
+    SEINFRAPET_RACOM(SEINFRAPET, RACOM, 1),
+    SEINFRAPET_REPR(SEINFRAPET, REPR, 7),
+    SEINFRAPET_SCN(SEINFRAPET, SCN, 2),
+    SEINFRAPET_SOLI(SEINFRAPET, SOLI, 1),
+    SEINFRAPET_TCE(SEINFRAPET, TCE, 7),
+    SEINFRAELE_ACOM(SEINFRAELE, ACOM, 2),
+    SEINFRAELE_DEN(SEINFRAELE, DEN, 3),
+    SEINFRAELE_DES(SEINFRAELE, DES, 1),
+    SEINFRAELE_MON(SEINFRAELE, MON, 4),
+    SEINFRAELE_PC(SEINFRAELE, PC, 2),
+    SEINFRAELE_RA(SEINFRAELE, RA, 22),
+    SEINFRAELE_REPR(SEINFRAELE, REPR, 7),
+    SEINFRAELE_TCE(SEINFRAELE, TCE, 4),
+    SEINFRAPOR_DEN(SEINFRAPOR, DEN, 2),
+    SEINFRAPOR_DES(SEINFRAPOR, DES, 2),
+    SEINFRAPOR_MON(SEINFRAPOR, MON, 6),
+    SEINFRAPOR_PC(SEINFRAPOR, PC, 4),
+    SEINFRAPOR_PCSP(SEINFRAPOR, PCSP, 1),
+    SEINFRAPOR_RA(SEINFRAPOR, RA, 18),
+    SEINFRAPOR_REPR(SEINFRAPOR, REPR, 5),
+    SEINFRAPOR_TCE(SEINFRAPOR, TCE, 11),
+    SEINFRAROD_ACOM(SEINFRAROD, ACOM, 1),
+    SEINFRAROD_DES(SEINFRAROD, DES, 2),
+    SEINFRAROD_MON(SEINFRAROD, MON, 10),
+    SEINFRAROD_PC(SEINFRAROD, PC, 4),
+    SEINFRAROD_RA(SEINFRAROD, RA, 23),
+    SEINFRAROD_RACOM(SEINFRAROD, RACOM, 1),
+    SEINFRAROD_REPR(SEINFRAROD, REPR, 14),
+    SEINFRAROD_RL(SEINFRAROD, RL, 2),
+    SEINFRAROD_RMON(SEINFRAROD, RMON, 2),
+    SEINFRAROD_SCN(SEINFRAROD, SCN, 1),
+    SEINFRAROD_TCE(SEINFRAROD, TCE, 18),
+    SEINFRAURB_ACOM(SEINFRAURB, ACOM, 2),
+    SEINFRAURB_DEN(SEINFRAURB, DEN, 4),
+    SEINFRAURB_MON(SEINFRAURB, MON, 13),
+    SEINFRAURB_PC(SEINFRAURB, PC, 11),
+    SEINFRAURB_RA(SEINFRAURB, RA, 56),
+    SEINFRAURB_REPR(SEINFRAURB, REPR, 30),
+    SEINFRAURB_RI(SEINFRAURB, RI, 1),
+    SEINFRAURB_RMON(SEINFRAURB, RMON, 1),
+    SEINFRAURB_SOLI(SEINFRAURB, SOLI, 2),
+    SEINFRAURB_TCE(SEINFRAURB, TCE, 15),
+    SEMEC_RA(SEMEC, RA, 1),
+    SEINFRAOPE_RA(SEINFRAOPE, RA, 1),
+    SEINFRAOPE_REPR(SEINFRAOPE, REPR, 6),
+    SEINFRAOPE_TCE(SEINFRAOPE, TCE, 7),
+    SECEXTCE_TCE(SECEXTCE, TCE, 684),
+    SECEXTRAB_ACOM(SECEXTRAB, ACOM, 1),
+    SECEXTRAB_DEN(SECEXTRAB, DEN, 5),
+    SECEXTRAB_MON(SECEXTRAB, MON, 9),
+    SECEXTRAB_PC(SECEXTRAB, PC, 10),
+    SECEXTRAB_RACOM(SECEXTRAB, RACOM, 1),
+    SECEXTRAB_REPR(SECEXTRAB, REPR, 17),
+    SEPROC_TCE(SEPROC, TCE, 1);
+
+    public final UnidadeInstrucao unidade;
+    public final TipoInstrucao tipoInstrucao;
+    public final int quantidade;
+
+    EstoqueInstrucao(UnidadeInstrucao unidade, TipoInstrucao tipoInstrucao, int quantidade) {
+        this.unidade = unidade;
+        this.tipoInstrucao = tipoInstrucao;
+        this.quantidade = quantidade;
+    }
+
+}

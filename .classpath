@@ -23,6 +23,8 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="E:/ferramentas/cplex/cplex-studio-community129/cplex/lib/cplex.jar"/>
+	<classpathentry kind="lib" path="C:/sti/fontes-tcu/git/workforce-assignment/lib/cplex.jar"/>
+	<classpathentry kind="lib" path="C:/sti/repo_maven_local/com/oracle/ojdbc6/11.2.0.4.0/ojdbc6-11.2.0.4.0.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
